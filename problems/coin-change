@@ -1,0 +1,23 @@
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+    console.log(coins);
+    coins.sort((a,b)=> a-b);
+    console.log(coins);
+    var coin = coins.pop();
+    var count = 0;
+    while(coin!=null){
+        while(amount>=coin){
+            amount = amount - coin;
+            count++;
+            console.log(coin);
+            console.log(amount);
+        }
+        coin = coins.pop();
+    }
+    if (amount == 0) return count;
+    else return -1;
+};
