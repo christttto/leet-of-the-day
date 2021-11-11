@@ -1,0 +1,86 @@
+https://www.youtube.com/watch?v=vYquumk4nWw
+dynamic programming
+	making processing more efficient
+	i.e. saving progress in recursion so calculation doesn't get repeated
+
+fibonacci
+
+how to make dp
+
+1. Recursion
+2. store (memoize)
+3. bottom-up
+
+
+def fib(n):
+	if n == 1 or n == 2:
+		result = 1
+	else:
+		result = fib(n-1) + fib (n-2)
+	return result
+
+this works, but very inefficient
+for every fib(n) all the previous ones are already done, doing same work again
+
+O(2^n)
+
+memoized solution
+
+//it will have array with lenghth of n+1
+
+def fib(n,memo):
+	//memoization and saving need to repeat
+	if memo[n] != null:
+		return memo[n]
+	if n == 1 or n == 2:
+		result = i
+	else:
+		result = fib(n-1) + fib(n-2)
+	memo[n] = result
+	return result
+
+
+bottom-up approach
+
+if n==1 or n==2:
+	return 1;
+bottom_up = new int[n+1]
+bottom_up[1] = 1
+bottom_up[2] = 1
+for i from 3 upto n:
+	bottom_up[i] = bottom_up[i-1] + bottom_up[i-2]
+return bottom_up[n]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
