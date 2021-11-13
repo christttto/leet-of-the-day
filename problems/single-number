@@ -1,0 +1,12 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    var numsSet = new Set();
+    for (num in nums){
+        if(numSet.prototype.has(num)) numsSet.prototype.add(num);
+        else numsSet.prototype.delete(num);
+    }
+    return numsSet.values().get(0);
+};
