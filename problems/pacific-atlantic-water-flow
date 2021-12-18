@@ -1,0 +1,47 @@
+/**
+ * @param {number[][]} heights
+ * @return {number[][]}
+ */
+
+
+var pacificAtlantic = function(heights) {
+    let dp = new Array(heights.length);
+    rows = heights.length;
+    columns = heights[0].length;
+    for (let i = 0; i < rows; i++) {
+        dp[i] = new Array(heights[0].length);
+        for(let j = 0; j < columns; j++){
+            dp[i][j]= {"p":false, "a":false};
+        }
+    }
+    
+    var checker = function(row, column, visit, prevHeight){
+        if (row < 0 || column < 0 ||
+            row == rows || column == columns ||
+            heights[row][column] < prevHeight) return;
+        visited = dp[row][column][visit];
+        if (visited) return;
+        dp[row][column][visit] = true;
+        checker(row+1,column,visit,heights[row][column]);
+        checker(row-1,column,visit,heights[row][column]);
+        checker(row,column+1,visit,heights[row][column]);
+        checker(row,column-1,visit,heights[row][column]);
+        
+    }
+    
+    for (let i = 0; i < columns; i++) {
+        checker(0,i,"p",heights[0][i]);
+        checker(rows-1,i,"a",heights[rows-1][i]);
+    }
+    for (let j = 0; j < rows; j++) {
+        checker(j,0,"p",heights[j][0]);
+        checker(j,columns-1,"a",heights[j][columns-1]);
+    }
+    let res = new Array();
+    for (let i = 0; i < rows; i++) {
+        for(let j = 0; j < columns; j++){
+            if(dp[i][j]["a"] && dp[i][j]["p"]) res.push([i,j]);
+        }
+    }
+    return res;
+};
