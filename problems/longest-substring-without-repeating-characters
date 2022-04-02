@@ -1,0 +1,21 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function(s) {
+    if(!s.length) return 0;
+    let myMap = new Map();
+    let l=0
+    let best = 0;
+    for(let r=0;r<s.length;r++) {
+        currentNumber=s[r]
+        if(myMap.has(currentNumber)){//if I already saw this number
+            l = Math.max(l,myMap.get(currentNumber)+1);//l's index is now of what we saw last time
+            myMap.set(currentNumber, r);//
+        }
+        myMap.set(currentNumber,r);
+        best = Math.max(best,r-l+1);
+        
+    }
+    return best;
+};
