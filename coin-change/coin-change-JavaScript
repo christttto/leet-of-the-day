@@ -1,0 +1,17 @@
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+    const count = new Array(amount + 1).fill(Infinity)
+    count[0] = 0
+    
+    for(const currentCoin of coins){
+        for(let currentAmount = currentCoin; currentAmount <= amount; currentAmount++){
+            count[currentAmount] = Math.min(count[currentAmount], count[currentAmount - currentCoin] + 1)
+        }
+    }
+    
+    return count[amount] == Infinity ? -1 : count[amount]
+};
